@@ -610,7 +610,7 @@ async def final_total_questions_input(update: Update, context: CallbackContext) 
         return FINAL_TOTAL_QUESTIONS
 
     context.user_data["total_questions"] = total_questions
-    msg = "ما هي نسبة النجاح المطلوبة؟ (مثال: 50)" if lang == "ar" else "What is the required passing percentage? (e.g. 50)"
+    msg = "ما هي الدرجة النهائية التي تريد ان تحصل عليها؟ (مثال: 90)" if lang == "ar" else "What is the final grade you want to get? (e.g. 90)"
     await update.message.reply_text(msg)
     return FINAL_PASS_PERCENT
 
@@ -641,13 +641,13 @@ async def final_pass_percent_input(update: Update, context: CallbackContext) -> 
     if lang == "ar":
         msg = (
             f"بناءً على درجة الانترنل {internal_score:.2f}% وعدد الأسئلة {total_questions},\n"
-            f"يجب عليك حل حوالي {questions_to_solve} سؤالًا على الأقل لتحصل على {passing_percent}% نجاح.\n"
+            f"يجب عليك حل حوالي {questions_to_solve} سؤالًا على الأقل لتحصل على {passing_percent}%.\n"
             "للبدء مجددًا ارسل /start"
         )
     else:
         msg = (
             f"Based on your internal score {internal_score:.2f}% and total questions {total_questions},\n"
-            f"you need to correctly answer about {questions_to_solve} questions to achieve {passing_percent}% passing.\n"
+            f"you need to correctly answer about {questions_to_solve} questions to achieve {passing_percent}%.\n"
             "To start over, send /start"
         )
     await update.message.reply_text(msg, reply_markup=ReplyKeyboardMarkup(main_menu_keyboard[lang], resize_keyboard=True))
