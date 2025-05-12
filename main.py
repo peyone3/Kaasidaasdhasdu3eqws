@@ -10,6 +10,10 @@ from telegram.ext import (
 import logging
 import asyncio
 import nest_asyncio
+import os
+from keep_alive import keep_alive
+keep_alive()
+
 
 # Enable logging for debugging
 logging.basicConfig(
